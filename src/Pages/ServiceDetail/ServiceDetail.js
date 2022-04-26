@@ -1,24 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import useBookService from '../../hook/useBookService';
 
 const ServiceDetail = () => {
     const navigate = useNavigate();
     const { serviceId } = useParams();
-    const [service, setService] = useState({});
+    const [service] = useBookService(serviceId);
     const { img, name, description, price } = service;
+    
 
-    useEffect(() => {
-        const url = `http://localhost:5000/service/${serviceId}`;
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setService(data))
-    }, [serviceId])
-
+    
     return (
         <div>
             <h2>Welcome to detail: {name}</h2>
             <div className='text-center'>
-                    <button onClick={()=>navigate(`/checkout/${service._id}`)} className='btn btn-primary'>Proceed Checkout</button>
+                <button onClick={() => navigate('/checkout')} className='btn btn-primary'>Proceed Checkout</button>
                 <div className="w-25 m-auto mt-5">
                     <img className='w-100' src={img} alt="" />
                     <h2>{name}</h2>
