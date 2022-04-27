@@ -10,7 +10,7 @@ const Orders = () => {
     useEffect(() => {
         const getOrders = async () => {
             const email = user?.email
-            const url = `http://localhost:5000/bookService?email=${email}`;
+            const url = `https://polar-gorge-98194.herokuapp.com/bookService?email=${email}`;
             const { data } = await axios.get(url);
             setOrders(data);
         }

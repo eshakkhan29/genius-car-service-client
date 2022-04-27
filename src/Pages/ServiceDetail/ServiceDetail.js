@@ -23,7 +23,7 @@ const ServiceDetail = () => {
             address: event.target.address.value,
             phone: event.target.phone.value
         }
-        axios.post('http://localhost:5000/bookService', order)
+        axios.post('https://polar-gorge-98194.herokuapp.com/bookService', order)
             .then(function (response) {
                 if (response?.data?.insertedId) {
                     toast.success('your order successfully placed')
